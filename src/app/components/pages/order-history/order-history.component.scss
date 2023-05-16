@@ -1,0 +1,121 @@
+:host {
+  flex: 1 1 auto;
+  display: flex;
+}
+
+.order-history {
+  background-color: rgb(236, 230, 230);
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  position: relative;
+
+  .section-header {
+    font-size: 1.4rem;
+    padding: 40px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .table-container {
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom: 0;
+    box-sizing: border-box;
+    margin: 80px 40px 40px 40px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+
+    .table-headers {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      background-color: hsl(199, 66%, 47%);
+
+      //scrollbar offset
+      padding: 0 17px 0 0;
+
+      .header {
+        flex-grow: 1;
+        flex-basis: 0;
+        height: 60px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: grid;
+        place-items: center;
+        font-family: 'Montserrat', sans-serif;
+        color: white;
+        font-size: 1rem;
+        padding: 0 0 0 20px;
+
+        display: flex;
+        justify-content: center;
+
+        .arrow {
+          padding: 0 0 0 10px;
+          height: 100%;
+          display: flex;
+          align-items: center;
+
+          &.active {
+            svg {
+              fill: #333;
+            }
+
+            &.desc {
+              svg {
+                transform: rotate(180deg);
+              }
+            }
+          }
+
+          &.inactive {
+            svg {
+              fill: white;
+            }
+          }
+
+          svg {
+            transition: transform 0.3s ease-in-out;
+            height: 20px;
+            width: 20px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .table-body {
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+
+      .table-row {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        border-bottom: 1px solid rgb(236, 230, 230);
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgb(236, 230, 230);
+        }
+
+        .table-field {
+          flex-grow: 1;
+          flex-basis: 0;
+          height: 40px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: grid;
+          place-items: center;
+          padding: 0 0 0 20px;
+        }
+      }
+    }
+  }
+
+
+}

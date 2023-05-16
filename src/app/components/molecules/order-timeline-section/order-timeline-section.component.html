@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="header block-cursor-events {{ headerColor }}">
+    <div class="header-text">{{ title | titlecase }}</div>
+    <div *ngIf="showCount" class="order-count">{{ orders.length }}</div>
+  </div>
+  <div class="order-container" #orderContainer>
+    <ng-container *ngIf="!addMode">
+      <app-order-card
+        *ngFor="let order of orders"
+        [order]="order"
+      ></app-order-card>
+    </ng-container>
+    <div
+      [@inAnimation]
+      *ngIf="addMode"
+      class="add-card block-cursor-events {{ isHovering ? 'hovering' : '' }}"
+    >
+      <div class="icon">+</div>
+    </div>
+  </div>
+</div>
