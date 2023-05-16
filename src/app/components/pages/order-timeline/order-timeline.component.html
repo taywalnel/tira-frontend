@@ -3,7 +3,7 @@
   <div class="order-timeline-container">
     <div class="order-timeline-section-container" #requestedSection>
       <app-order-timeline-section
-        [orders]="currentOrders.requested"
+        [orders]="[]"
         [title]="ORDER_STATUS.REQUESTED"
         headerColor="yellow"
         [addMode]="cardIsMoving && currentCardStatus != ORDER_STATUS.REQUESTED"
@@ -12,7 +12,7 @@
     </div>
     <div class="order-timeline-section-container" #acceptedSection>
       <app-order-timeline-section
-        [orders]="currentOrders.accepted"
+        [orders]="[]"
         [title]="ORDER_STATUS.ACCEPTED"
         headerColor="blue"
         [addMode]="cardIsMoving && currentCardStatus != ORDER_STATUS.ACCEPTED"
@@ -21,7 +21,7 @@
     </div>
     <div class="order-timeline-section-container" #inProgressSection>
       <app-order-timeline-section
-        [orders]="currentOrders.inProgress"
+        [orders]="[]"
         [title]="ORDER_STATUS.IN_PROGRESS"
         headerColor="purple"
         [addMode]="
@@ -32,7 +32,7 @@
     </div>
     <div class="order-timeline-section-container" #readySection>
       <app-order-timeline-section
-        [orders]="currentOrders.ready"
+        [orders]="[]"
         [title]="ORDER_STATUS.READY"
         headerColor="green"
         [addMode]="cardIsMoving && currentCardStatus != ORDER_STATUS.READY"

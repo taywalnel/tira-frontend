@@ -33,18 +33,6 @@ export interface CardDropEvent {
   ]
 })
 export class OrderTimelineComponent implements OnInit {
-  currentOrders: {
-    requested: Order[],
-    accepted: Order[],
-    inProgress: Order[],
-    ready: Order[],
-  } = {
-    requested: [],
-    accepted: [],
-    inProgress: [],
-    ready: [],
-  };
-
   resetCard$: Subject<Order> = new BehaviorSubject<any>(null);
   moveCard$: Subject<CardDropEvent> = new BehaviorSubject<any>(null);
   cardDrop$ = new Subject<CardDropEvent>;
@@ -65,20 +53,10 @@ export class OrderTimelineComponent implements OnInit {
 
   ngOnInit(): void {
     this.watchForCardMove();
-    this.appComponent.tickets$.subscribe((tickets) => this.currentOrders = this.formatOrders(tickets));
   }
 
   ngAfterViewInit() {
     this.watchForCardDrop();
-  }
-
-  formatOrders(orders: Order[]) {
-     return {
-        requested: orders.filter((order) => order.status === ORDER_STATUS.REQUESTED),
-        accepted: orders.filter((order) => order.status === ORDER_STATUS.ACCEPTED),
-        inProgress: orders.filter((order) => order.status === ORDER_STATUS.IN_PROGRESS),
-        ready: orders.filter((order) => order.status === ORDER_STATUS.READY),
-      };
   }
 
   watchForCardMove(){
