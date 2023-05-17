@@ -1,7 +1,7 @@
 <div class="root">
   <app-header-bar></app-header-bar>
   <div class="application-body">
-    <app-side-nav></app-side-nav>
     <router-outlet></router-outlet>
   </div>
+  <app-modal [class.open]="modalService.modalOpen$ | async"></app-modal>
 </div>

@@ -1,0 +1,53 @@
+:host {
+  flex: 1 1 auto;
+}
+
+.workflow-root {
+  display: flex;
+  // gap: 25px;
+  // flex-wrap: nowrap;
+  height: 100%;
+  background-color: rgb(236, 230, 230);
+  box-sizing: border-box;
+  // padding: 40px;
+  overflow: hidden;
+  position: relative;
+
+  flex-direction: column;
+  flex: 1 1 auto;
+
+  .section-header {
+    font-size: 1.4rem;
+    padding: 40px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .workflow-container {
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom: 0;
+    margin: 80px 40px 40px 40px;
+    display: flex;
+    gap: 25px;
+
+    .workflow-section-container {
+      flex-basis: 100%;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    .additional-actions-container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: inherit;
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 25px;
+
+      .additional-action {
+        flex-basis: 50%;
+        height: 25vh;
+      }
+    }
+  }
+}

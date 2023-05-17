@@ -1,0 +1,50 @@
+<div class="workflow-root">
+  <div class="section-header">Workflow</div>
+  <div class="workflow-container">
+    <div class="workflow-section-container" #toDoSection>
+      <app-workflow-section
+        [tickets]="
+          ticketService.tickets$
+            | async
+            | filterByStatus : TICKET_STATUS_CODES.TO_DO
+        "
+        [sectionType]="TICKET_STATUS_CODES.TO_DO"
+        headerColor="yellow"
+        [addMode]="
+          cardIsMoving && currentCardStatus != TICKET_STATUS_CODES.TO_DO
+        "
+        [isHovering]="hoveringOverSection === TICKET_STATUS_CODES.TO_DO"
+      ></app-workflow-section>
+    </div>
+    <div class="workflow-section-container" #inProgressSection>
+      <app-workflow-section
+        [tickets]="
+          ticketService.tickets$
+            | async
+            | filterByStatus : TICKET_STATUS_CODES.IN_PROGRESS
+        "
+        [sectionType]="TICKET_STATUS_CODES.IN_PROGRESS"
+        headerColor="blue"
+        [addMode]="
+          cardIsMoving && currentCardStatus != TICKET_STATUS_CODES.IN_PROGRESS
+        "
+        [isHovering]="hoveringOverSection === TICKET_STATUS_CODES.IN_PROGRESS"
+      ></app-workflow-section>
+    </div>
+    <div class="workflow-section-container" #doneSection>
+      <app-workflow-section
+        [tickets]="
+          ticketService.tickets$
+            | async
+            | filterByStatus : TICKET_STATUS_CODES.DONE
+        "
+        [sectionType]="TICKET_STATUS_CODES.DONE"
+        headerColor="purple"
+        [addMode]="
+          cardIsMoving && currentCardStatus != TICKET_STATUS_CODES.DONE
+        "
+        [isHovering]="hoveringOverSection === TICKET_STATUS_CODES.DONE"
+      ></app-workflow-section>
+    </div>
+  </div>
+</div>

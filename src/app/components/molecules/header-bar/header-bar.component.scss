@@ -2,30 +2,29 @@
   background-color: #333;
   display: flex;
   justify-content: space-between;
+  padding: 20px;
+
+  .left-container {
+    display: flex;
+    gap: 40px;
+  }
 
   .header-text {
+    display: block;
     font-size: 1.4rem;
     color: white;
-    font-family: 'Montserrat', sans-serif;
-    padding: 20px;
   }
 
   .header-options {
     display: flex;
     align-items: center;
-    padding: 0 20px 0 0;
+    gap: 20px;
+    color: white;
 
-    .option {
+    .header-option {
       display: grid;
       place-items: center;
-
-      &:hover {
-        cursor: pointer;
-      }
-
-      svg path {
-          fill: white;
-      }
+      cursor: pointer;
     }
   }
 }

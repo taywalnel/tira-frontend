@@ -1,0 +1,90 @@
+<div class="modal-header"><span class="header-text">Create new item</span></div>
+<div class="modal-body">
+  <div [formGroup]="formGroup" class="form-group-container">
+    <div class="form-field-container">
+      <label for="title">Title</label>
+      <input type="text" name="title" formControlName="title" />
+    </div>
+    <div class="form-field-container">
+      <label for="description">Description</label>
+      <textarea
+        rows="6"
+        name="description"
+        formControlName="description"
+      ></textarea>
+    </div>
+    <div class="form-row-container">
+      <div class="form-field-container">
+        <label for="description">Status</label>
+        <select name="status" formControlName="status">
+          <option value=""></option>
+          <option
+            *ngFor="let option of ticketStatusOptions"
+            [value]="option.value"
+          >
+            {{ option.label }}
+          </option>
+        </select>
+      </div>
+      <div class="form-field-container">
+        <label for="description">Priority</label>
+        <select name="priority" formControlName="priority">
+          <option value=""></option>
+          <option
+            *ngFor="let option of ticketPriorityOptions"
+            [value]="option.value"
+          >
+            {{ option.label }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row-divider">
+      <hr />
+      <span class="divider-label">optional</span>
+      <hr />
+    </div>
+    <div class="form-row-container">
+      <div class="form-field-container">
+        <label for="size">Size</label>
+        <select name="size" formControlName="size">
+          <option value=""></option>
+          <option
+            *ngFor="let option of ticketSizeOptions"
+            [value]="option.value"
+          >
+            {{ option.label }}
+          </option>
+        </select>
+      </div>
+      <div class="form-field-container">
+        <label for="dueDate">Due Date</label>
+        <mat-form-field>
+          <input
+            formControlName="dateDue"
+            matInput
+            name="dueDate"
+            [matDatepicker]="picker"
+            [min]="dateInputMinimum"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div class="buttons-wrapper">
+    <button class="cancel" (click)="handleCloseModal()">Cancel</button>
+    <button
+      [disabled]="formGroup.invalid"
+      class="positive"
+      (click)="handleCreateTicket()"
+    >
+      Create
+    </button>
+  </div>
+</div>

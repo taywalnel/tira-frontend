@@ -1,0 +1,10 @@
+<div class="modal-wrapper">
+  <div class="modal">
+    <div [ngSwitch]="modalService.modalType$ | async">
+      <app-create-ticket-modal
+        *ngSwitchCase="'createTicket'"
+      ></app-create-ticket-modal>
+      <ng-container *ngSwitchDefault></ng-container>
+    </div>
+  </div>
+</div>

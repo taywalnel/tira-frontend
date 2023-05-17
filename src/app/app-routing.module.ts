@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OrderHistoryComponent } from './components/pages/order-history/order-history.component';
-import { OrderTimelineComponent } from './components/pages/order-timeline/order-timeline.component';
+import { ArchivePageComponent } from './components/pages/archive/archive-page.component';
 import { SettingsComponent } from './components/pages/settings/settings.component';
+import { WorkflowPageComponent } from './components/pages/workflow/workflow-page.component';
 
 const routes: Routes = [
   {
-    path: '', component: OrderTimelineComponent
+    path: '', component: WorkflowPageComponent
   },
   {
-    path: 'history', component: OrderHistoryComponent
+    path: 'tickets', component: ArchivePageComponent
   },
   {
     path: 'settings', component: SettingsComponent

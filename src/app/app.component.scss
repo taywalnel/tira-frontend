@@ -1,8 +1,10 @@
 .root {
+    position: relative;
     width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 
     .application-body {
       flex: 1 1 auto;

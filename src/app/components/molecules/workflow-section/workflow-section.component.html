@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="header block-cursor-events {{ headerColor }}">
+    <div class="header-text">{{ TICKET_STATUS_LABELS[sectionType] }}</div>
+    <div *ngIf="showCount" class="ticket-count">{{ tickets.length }}</div>
+  </div>
+  <div class="tickets-container" #ticketContainer>
+    <ng-container *ngIf="!addMode">
+      <app-ticket *ngFor="let ticket of tickets" [ticket]="ticket"></app-ticket>
+    </ng-container>
+    <div
+      [@inAnimation]
+      *ngIf="addMode"
+      class="add-card block-cursor-events {{ isHovering ? 'hovering' : '' }}"
+    >
+      <div class="icon">+</div>
+    </div>
+  </div>
+  <div class="create-ticket-container" (click)="handleCreateTicket()">
+    + Add item
+  </div>
+</div>

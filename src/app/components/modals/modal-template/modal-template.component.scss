@@ -1,0 +1,34 @@
+:host {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-color: transparent;
+  transition: background-color 0.3s ease-in-out;
+
+  &.open {
+    pointer-events: all;
+    background-color: #333333e0;
+
+    .modal-wrapper {
+      transform: translateY(0);
+    }
+  }
+
+  .modal-wrapper {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+
+    .modal {
+      width: 500px;
+      max-width: 100%;
+      background-color: #fff;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+  }
+}
