@@ -20,7 +20,7 @@ import { ArchivePageComponent } from './components/pages/archive/archive-page.co
 import { SettingsComponent } from './components/pages/settings/settings.component';
 import { WorkflowPageComponent } from './components/pages/workflow/workflow-page.component';
 import { FilterByStatusPipe } from './pipes/filter-by-status.pipe';
-
+import { FormatIdPipe } from './pipes/format-id.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,8 @@ import { FilterByStatusPipe } from './pipes/filter-by-status.pipe';
     SettingsComponent,
     ModalTemplateComponent,
     CreateTicketModalComponent,
-    FilterByStatusPipe
+    FilterByStatusPipe,
+    FormatIdPipe,
   ],
   imports: [
     BrowserModule,
@@ -45,9 +46,9 @@ import { FilterByStatusPipe } from './pipes/filter-by-status.pipe';
     MatSelectModule,
     MatDatepickerModule,
     ReactiveFormsModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

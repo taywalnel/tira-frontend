@@ -4,11 +4,11 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Ticket } from '../../models/ticket';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TicketService {
   tickets$ = new BehaviorSubject<Ticket[]>([]);
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   public createTicket(order: Ticket): Observable<Ticket[]> {
     const url = 'http://localhost:3000/ticket/create';
@@ -32,5 +32,3 @@ export class TicketService {
     return this.http.delete(url) as Observable<Ticket[]>;
   }
 }
-
-

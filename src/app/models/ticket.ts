@@ -6,5 +6,6 @@ export interface Ticket {
   status: string;
   priority: string;
   size: string;
+  displayId?: string;
   _id?: string;
 }

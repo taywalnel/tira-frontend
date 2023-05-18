@@ -7,7 +7,7 @@ import { TicketService } from 'src/app/services/ticketService/ticket.service';
 @Component({
   selector: 'app-create-ticket-modal',
   templateUrl: './create-ticket-modal.component.html',
-  styleUrls: ['./create-ticket-modal.component.scss']
+  styleUrls: ['./create-ticket-modal.component.scss'],
 })
 export class CreateTicketModalComponent implements OnInit {
   loading = false;
@@ -27,42 +27,58 @@ export class CreateTicketModalComponent implements OnInit {
     { value: 'small', label: 'Small' },
     { value: 'medium', label: 'Medium' },
     { value: 'large', label: 'Large' },
-  ]
-  constructor(public modalService: ModalService, private ticketService: TicketService) { }
+  ];
+
+  get titleValue() {
+    return this.formGroup.get('title').value;
+  }
+
+  constructor(
+    public modalService: ModalService,
+    public ticketService: TicketService
+  ) {}
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({
       title: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required]),
+      description: new FormControl('', []),
       dateDue: new FormControl('', []),
       status: new FormControl('', [Validators.required]),
       priority: new FormControl('medium', [Validators.required]),
       size: new FormControl('', []),
     });
+    debugger;
     this.modalService.modalData$.subscribe((data) => {
-      if(data['status']){
+      if (data['status']) {
         this.formGroup.controls['status'].setValue(data['status']);
       }
     });
   }
 
-  handleCloseModal(){
+  handleCloseModal() {
     this.modalService.closeModal();
     this.formGroup.reset();
-    this.formGroup.controls['priority'].setValue('medium', {emitEvent: false});
+    this.formGroup.controls['priority'].setValue('medium', {
+      emitEvent: false,
+    });
   }
 
-  handleCreateTicket(){
+  handleCreateTicket() {
     this.loading = true;
-    const newTicket: Ticket = this.getNewTicketFromFormGroup(this.formGroup.value);
-    this.ticketService.createTicket(newTicket).subscribe((tickets) => {
-      this.loading = false;
-      this.ticketService.tickets$.next(tickets);
-      this.handleCloseModal();
-    }, (error) => {
-      this.loading = false;
-      console.log(error);
-    });
+    const newTicket: Ticket = this.getNewTicketFromFormGroup(
+      this.formGroup.value
+    );
+    this.ticketService.createTicket(newTicket).subscribe(
+      (tickets) => {
+        this.loading = false;
+        this.ticketService.tickets$.next(tickets);
+        this.handleCloseModal();
+      },
+      (error) => {
+        this.loading = false;
+        console.log(error);
+      }
+    );
   }
 
   getNewTicketFromFormGroup(formValue: any): Ticket {
@@ -79,8 +95,8 @@ export class CreateTicketModalComponent implements OnInit {
   }
 
   formatDate(date: Date): string {
-    if(date){
-      return date.toDateString()
+    if (date) {
+      return date.toDateString();
     }
     return null;
   }

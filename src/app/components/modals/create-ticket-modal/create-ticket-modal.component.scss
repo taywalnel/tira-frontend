@@ -8,8 +8,10 @@
   height: 60px;
   text-align: center;
   background-color: hsl(199deg, 66%, 47%);
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  color: white;
+  padding-left: 20px;
 
   .header-text {
     display: block;

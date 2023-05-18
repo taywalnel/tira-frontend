@@ -1,6 +1,6 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -19,13 +19,15 @@ $tira-frontend-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$tira-frontend-theme: mat.define-light-theme((
-  color: (
-    primary: $tira-frontend-primary,
-    accent: $tira-frontend-accent,
-    warn: $tira-frontend-warn,
+$tira-frontend-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $tira-frontend-primary,
+      accent: $tira-frontend-accent,
+      warn: $tira-frontend-warn,
+    ),
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -34,29 +36,38 @@ $tira-frontend-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;800&family=Open+Sans:wght@300;400;600;800&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;800&family=Open+Sans:wght@300;400;600;800&display=swap');
-
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Open Sans', sans-serif; }
-
-h1, h2, h3, h4 {
+html,
+body {
+  height: 100%;
+}
+body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Open Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
 }
 
 h2 {
-  font-weight: 400;
+  font-size: 20px;
 }
 
 textarea {
   resize: none;
   overflow-y: auto;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 button {
-  padding: 10px;
+  height: 40px;
   outline: none;
   font-size: 16px;
   box-sizing: border-box;
@@ -75,8 +86,8 @@ button {
   }
 
   &.positive {
-    background-color: #4CAF50;
-    border: 2px solid #4CAF50;
+    background-color: #4caf50;
+    border: 2px solid #4caf50;
     color: white;
 
     &:hover {
@@ -115,7 +126,9 @@ button {
   flex-direction: column;
   gap: 5px;
 
-  input, textarea, select {
+  input,
+  textarea,
+  select {
     padding: 10px;
     border: 1px solid #ccc;
     outline: none;
@@ -126,34 +139,13 @@ button {
 
   label {
     font-size: 14px;
-    font-weight: bold;
     color: #666;
   }
 
-  input, select {
+  input,
+  select {
     height: 40px;
   }
-}
-
-.form-row-divider {
-  padding: 10px 0;
-  width: 100%;
-  display: flex;
-  gap: 5px;
-
-  hr {
-    flex: 1;
-    height: 1px;
-    border: 0;
-    background-color: #e3e3e3;
-  }
-
-  .divider-label {
-    font-style: italic;
-    color: #666;
-    font-size: 14px;
-  }
-
 }
 
 .form-row-container {
@@ -168,5 +160,5 @@ button {
 .form-group-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 }

@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 15px;
   border-radius: 8px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   padding: 10px;
   box-shadow: rgb(0 0 0 / 35%) 0px 1px 15px;
   background-color: hsla(0, 0%, 100%, 0.8);
@@ -40,16 +40,8 @@
       align-items: center;
       gap: 3px;
       padding: 3px 6px;
-      background-color: #939393;
+      background-color: #808080;
       border-radius: 8px;
-
-      &.date {
-        background-color: #e53935
-      }
-
-      &.size {
-        background-color: #2995c7;
-      }
 
       img {
         width: 16px;
@@ -59,7 +51,7 @@
       span {
         font-size: 12px;
         font-weight: 600;
-        color: white
+        color: white;
       }
     }
   }

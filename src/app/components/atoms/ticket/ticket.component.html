@@ -5,21 +5,17 @@
   #ticketElement
 >
   <div class="ticket-header">
-    <span class="ticket-id">#{{ ticket._id }}</span>
+    <span class="ticket-id">#{{ ticket.displayId }}</span>
     <span class="ticket-title">{{ ticket.title }}</span>
   </div>
   <div class="ticket-body">
     <div class="ticket-attributes">
-      <div *ngIf="ticket.dateDue" class="ticket-attribute date">
+      <div *ngIf="ticket.dateDue" class="ticket-attribute">
         <img src="/assets/icons/clock.svg" alt="clock icon" />
         <span>{{ ticket.dateDue | date : "dd/MMM" }}</span>
       </div>
-      <div
-        *ngIf="ticket.priority"
-        class="ticket-attribute"
-        [ngStyle]="{ 'background-color': PRIORITY_COLORS[ticket.priority] }"
-      >
-        <img src="/assets/icons/warning.svg" alt="priority icon" />
+      <div *ngIf="ticket.priority" class="ticket-attribute">
+        <img src="/assets/icons/warning.svg" alt="priority" />
         <span>{{ ticket.priority }}</span>
       </div>
       <div *ngIf="ticket.size" class="ticket-attribute size">
