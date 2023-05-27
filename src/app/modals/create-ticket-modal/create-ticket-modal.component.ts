@@ -47,7 +47,6 @@ export class CreateTicketModalComponent implements OnInit {
       priority: new FormControl('medium', [Validators.required]),
       size: new FormControl('', []),
     });
-    debugger;
     this.modalService.modalData$.subscribe((data) => {
       if (data['status']) {
         this.formGroup.controls['status'].setValue(data['status']);

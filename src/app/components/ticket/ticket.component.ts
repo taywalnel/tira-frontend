@@ -15,8 +15,8 @@ import {
   takeUntil,
 } from 'rxjs';
 import { Ticket } from 'src/app/models/ticket';
-import { WorkflowSectionComponent } from '../../molecules/workflow-section/workflow-section.component';
 import { WorkflowPageComponent } from '../../pages/workflow/workflow-page.component';
+import { WorkflowSectionComponent } from '../workflow-section/workflow-section.component';
 
 type TicketStatusOptions = {
   [key: string]: string;
@@ -30,9 +30,11 @@ type TicketStatusOptions = {
 export class TicketComponent implements AfterViewInit {
   @Input() ticket: Ticket;
 
-  move$: Observable<MouseEvent>;
+  ticketTransformStyling$: Observable<string>;
+
+  mouseMove$: Observable<MouseEvent>;
   down$: Observable<MouseEvent>;
-  up$: Observable<MouseEvent>;
+  mouseUp$: Observable<MouseEvent>;
   windowResize$: Observable<Event>;
   startingCardCoOrdinates: { x: number; y: number } | null;
   style = '';
@@ -82,8 +84,8 @@ export class TicketComponent implements AfterViewInit {
       this.ticketElement.nativeElement,
       'mousedown'
     );
-    this.move$ = fromEvent<MouseEvent>(document, 'mousemove');
-    this.up$ = fromEvent<MouseEvent>(
+    this.mouseMove$ = fromEvent<MouseEvent>(document, 'mousemove');
+    this.mouseUp$ = fromEvent<MouseEvent>(
       this.ticketElement.nativeElement,
       'mouseup'
     );
@@ -93,7 +95,7 @@ export class TicketComponent implements AfterViewInit {
   }
 
   watchForCardDrop() {
-    this.up$.subscribe((event) => {
+    this.mouseUp$.subscribe((event) => {
       this.workflow.cardDrop$.next({
         clientX: event.clientX,
         clientY: event.clientY,
@@ -108,10 +110,12 @@ export class TicketComponent implements AfterViewInit {
   }
 
   watchForCardMove() {
-    this.move$
-      .pipe(skipUntil(this.down$), takeUntil(this.up$), repeat())
+    this.mouseMove$
+      .pipe(skipUntil(this.down$), takeUntil(this.mouseUp$), repeat())
       .subscribe((event) => {
+        //set card moving to true
         this.cardIsMoving = true;
+
         this.workflow.moveCard$.next({
           clientX: event.clientX,
           clientY: event.clientY,

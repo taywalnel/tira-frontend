@@ -1,3 +1,5 @@
+@import "../../constants/colors";
+
 :host {
   display: flex;
   flex-direction: column;
@@ -7,7 +9,7 @@
 .modal-header {
   height: 60px;
   text-align: center;
-  background-color: hsl(199deg, 66%, 47%);
+  background-color: $ruby-red;
   display: flex;
   align-items: center;
   color: white;

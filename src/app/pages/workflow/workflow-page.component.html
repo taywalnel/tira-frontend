@@ -9,7 +9,7 @@
             | filterByStatus : TICKET_STATUS_CODES.TO_DO
         "
         [sectionType]="TICKET_STATUS_CODES.TO_DO"
-        headerColor="yellow"
+        headerColor="#e0115f"
         [addMode]="
           cardIsMoving && currentCardStatus != TICKET_STATUS_CODES.TO_DO
         "
@@ -24,7 +24,7 @@
             | filterByStatus : TICKET_STATUS_CODES.IN_PROGRESS
         "
         [sectionType]="TICKET_STATUS_CODES.IN_PROGRESS"
-        headerColor="blue"
+        headerColor="#00aeef"
         [addMode]="
           cardIsMoving && currentCardStatus != TICKET_STATUS_CODES.IN_PROGRESS
         "
@@ -39,7 +39,7 @@
             | filterByStatus : TICKET_STATUS_CODES.DONE
         "
         [sectionType]="TICKET_STATUS_CODES.DONE"
-        headerColor="purple"
+        headerColor="#50c878"
         [addMode]="
           cardIsMoving && currentCardStatus != TICKET_STATUS_CODES.DONE
         "

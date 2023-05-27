@@ -1,5 +1,8 @@
 <div class="container">
-  <div class="header block-cursor-events {{ headerColor }}">
+  <div
+    class="header block-cursor-events"
+    [style.background-color]="headerColor"
+  >
     <div class="header-text">{{ TICKET_STATUS_LABELS[sectionType] }}</div>
     <div *ngIf="showCount" class="ticket-count">{{ tickets.length }}</div>
   </div>
@@ -10,7 +13,8 @@
     <div
       [@inAnimation]
       *ngIf="addMode"
-      class="add-card block-cursor-events {{ isHovering ? 'hovering' : '' }}"
+      class="add-card block-cursor-events"
+      [class.hovering]="isHovering"
     >
       <div class="icon">+</div>
     </div>
